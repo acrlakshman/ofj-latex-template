@@ -1,0 +1,24 @@
+name: Test template
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2.3.1
+
+    - name: Install TeX
+      run: |
+        sudo apt-get update && sudo apt-get install texlive
+        pdflatex ofj-template.tex
