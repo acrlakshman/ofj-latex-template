@@ -11,14 +11,21 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-18.04, ubuntu-20.04]
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2.3.1
 
-    - name: Install TeX
+    - name: Install TeX and test
       run: |
-        sudo apt-get update && sudo apt-get install texlive
+        sudo apt-get update && sudo apt-get install -y texlive-full
+        rm ofj-template.pdf
         pdflatex ofj-template.tex
+        pdflatex ofj-template.tex
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: resume-${{ matrix.os }}
+        path: ./*

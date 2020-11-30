@@ -18,8 +18,24 @@ cd ofj-latex-template
 pdflatex ofj-template.tex
 ```
 
-## Additional files included in this repository
+## Details
 
-- booktabs.sty
-- algorithmic.sty
-- listings.sty
+### Ubuntu
+
+```sh
+sudo apt-get install texlive-full
+```
+
+### Arch
+
+If encountered errors related to missing files, please consider the following
+
+```sh
+cp ext/listings-1.8d.sty listings.sty
+cp ext/booktabs.sty booktabs.sty
+cp ext/algorithmic.sty algorithmic.sty
+```
+
+## Miscellaneous
+
+- Generated pdf (ofj-template.pdf) from each workflow is being uploaded as artifacts, feel free to check them via `Actions` tab.
